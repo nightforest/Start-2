@@ -1,0 +1,57 @@
+doctype html
+
+<!--[if lt IE 7 ]><html class="ie ie6 ie-lt10 ie-lt9 ie-lt8 ie-lt7 no-js" lang="ru"> <![endif]-->
+<!--[if IE 7 ]><html class="ie ie7 ie-lt10 ie-lt9 ie-lt8 no-js" lang="ru"> <![endif]-->
+<!--[if IE 8 ]><html class="ie ie8 ie-lt10 ie-lt9 no-js" lang="ru"> <![endif]-->
+<!--[if IE 9 ]><html class="ie ie9 ie-lt10 no-js" lang="ru"> <![endif]-->
+<!--[if gt IE 9]><!--><html class="no-js" lang="ru"><!--<![endif]-->
+
+head
+	meta(charset='utf-8')
+	title Заголовок страницы 
+	
+	// Подключение CSS стилей без JS
+	noscript
+		link(rel='stylesheet', href='css/header.min.css')
+		link(rel='stylesheet', href='css/main.min.css')
+	
+	// Основные метатеги
+	meta(name='description' content='')
+	meta(name='keywords' content='')
+	meta(http-equiv='X-UA-Compatible', content='IE=edge')
+	meta(name='viewport', content='width=device-width, initial-scale=1')
+	
+	// Подключение фавиконок
+	link(rel="shortcut icon" href="img/favicon/favicon.ico" type="image/x-icon")
+	link(rel="apple-touch-icon" href="img/favicon/apple-touch-icon.png")
+	link(rel="apple-touch-icon" sizes="72x72" href="img/favicon/apple-touch-icon-72x72.png")
+	link(rel="apple-touch-icon" sizes="114x114" href="img/favicon/apple-touch-icon-114x114.png")
+
+	// build:css css/vendor.min.css
+	// bower:css
+	// endbower
+	// endbuild
+	// build:css css/main.min.css
+	link(rel='stylesheet', href='css/fonts.css')
+	link(rel='stylesheet', href='css/header.css')
+	link(rel='stylesheet', href='css/main.css')
+	// endbuild
+body
+	// ########### body html code ###########
+
+	// build:js js/ie9.min.js
+	<!--[if lt IE 9]>
+	script(src='bower_components/es5-shim/es5-shim.min.js')
+	script(src='bower_components/html5shiv/dist/html5shiv.min.js')
+	script(src='bower_components/html5shiv/dist/html5shiv-printshiv.min.js')
+	script(src='bower_components/respond/dest/respond.min.js')
+	<![endif]-->
+	// endbuild
+
+	// build:js js/vendor.min.js
+	// bower:js
+	// endbower
+	// endbuild
+	// build:js js/main.min.js
+	script(src='js/common.js')
+	// endbuild
