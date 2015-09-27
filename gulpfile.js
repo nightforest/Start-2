@@ -76,7 +76,9 @@ gulp.task('bower', function () {
 // Компиляция SASS файлов
 gulp.task('sass', function () {
   gulp.src('app/sass/**/*.sass')
-    .pipe(sass().on('error', sass.logError))
+    .pipe(sass({
+    includePaths: require('node-bourbon').includePaths
+    }).on('error', sass.logError))
     .pipe(autoprefixer({
         browsers: ['last 15 versions'],
         cascade: true
