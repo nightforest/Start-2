@@ -1,4 +1,8 @@
 $(document).ready(function() {
+	//Preloader
+	setTimeout(function(){
+		$('#preloader').fadeOut('slow',function(){$(this).remove();});
+	}, 1000);
 
 	//SVG Fallback
 	if(!Modernizr.svg) {
