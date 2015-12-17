@@ -68,7 +68,7 @@ gulp.task('bower', function () {
   gulp.src('./app/index.html')
     .pipe(wiredep({
       directory : 'app/bower_components',
-      exclude: ['es5-shim', 'html5shiv', 'respond']
+      exclude: ['es5-shim', 'html5shiv', 'respond', 'modernizr']
     }))
     .pipe(gulp.dest('./app'));
 });
