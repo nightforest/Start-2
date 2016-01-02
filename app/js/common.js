@@ -4,6 +4,14 @@ $(document).ready(function() {
 		$('#preloader').fadeOut('slow',function(){$(this).remove();});
 	}, 1000);
 
+	//Navbar
+	$('ul.dropdown-menu [data-toggle=dropdown]').on('click', function(event) {
+		event.preventDefault(); 
+		event.stopPropagation(); 
+		$(this).parent().siblings().removeClass('open');
+		$(this).parent().toggleClass('open');
+	});
+
 	//SVG Fallback
 	if(!Modernizr.svg) {
 		$("img[src*='svg']").attr("src", function() {

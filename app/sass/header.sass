@@ -55,3 +55,186 @@ body
 
 .hidden
 	display: none
+
+//-----------------------------------------------------------
+//---------------------- Navbar -----------------------------
+//-----------------------------------------------------------
+
+$bgDefault      : #000000  // Цвет фона
+$bgHighlight    : #555555  // Цвет фона при наведении, активный
+$colDefault     : #ffffff  // Цвет текста
+$colHighlight   : #e3a30b  // Цвет текста при наведении, активный
+$dropDown       : true     // Выпадающее меню есть?
+$subMenu		: true     // Выпадающее подменю есть?
+$dropDownBg     : #333     // Цвет фона выпадающего меню
+$font-size      : 16px     // Размер текста
+$borderCol      : #212121  // Цвет разделительного бордера
+
+.navbar-default 
+	background-color: $bgDefault
+	border-color: $bgHighlight
+	background-image: none
+	border-radius: 0
+	box-shadow: none
+	border: 0
+	.navbar-brand 
+		color: $colDefault
+		&:hover, &:focus 
+			color: $colHighlight
+	.navbar-text 
+		color: $colDefault
+	.navbar-nav
+		.dropdown
+			position: relative
+			>
+				a:after
+					display: block
+					float: right
+					width: 0
+					height: 0
+					content: "\f107"
+					font-family: "FontAwesome"
+					margin-left: 5px
+					margin-right: 10px
+		> li 
+			> a 
+				color: $colDefault
+				font-size: $font-size
+				text-shadow: none
+				transition: all .5s ease
+				&:hover, &:focus 
+					color: $colHighlight
+			@if $dropDown
+				> .dropdown-menu
+					background-color: $dropDownBg
+					border-radius: 0
+					box-shadow: none
+					border: 0
+					padding: 0
+					> li > a
+						color: $colDefault
+						font-size: $font-size
+						border-bottom: 1px solid $borderCol
+						padding: 10px 20px
+						transition: all .5s ease
+						&:hover, &:focus
+							color: $colHighlight
+							background-color: $bgHighlight
+							background-image: none
+							box-shadow: none
+					.divider
+						background-color: $bgHighlight
+		> .active 
+			> a, > a:hover, > a:focus 
+				color: $colHighlight
+				background-color: $bgHighlight
+				background-image: none
+				box-shadow: none
+		> .open 
+			> a, > a:hover, > a:focus 
+				color: $colHighlight
+				background-color: $bgHighlight
+				background-image: none
+				box-shadow: none
+	.navbar-toggle 
+		border-color: $bgHighlight
+		&:hover, &:focus 
+			background-color: $bgHighlight 
+		.icon-bar 
+			background-color: $colDefault
+	.navbar-collapse,
+	.navbar-form 
+		border-color: $colDefault 
+		border: none
+	.navbar-link 
+		color: $colDefault
+		&:hover 
+			color: $colHighlight
+
+	@if $subMenu
+		// Submenu
+		.navbar-nav
+			.dropdown-submenu
+				position: relative
+				>
+					.dropdown-menu
+						top: 0
+						left: 100%
+						margin-top: 0
+						background-color: $dropDownBg
+						border-radius: 0
+						box-shadow: none
+						border: 0
+						padding: 0
+						> li > a
+							color: $colDefault
+							font-size: $font-size
+							padding: 10px 20px
+							border-bottom: 1px solid $borderCol
+							transition: all .5s ease
+							&:hover, &:focus
+								color: $colHighlight
+								background-color: $bgHighlight
+								background-image: none
+								box-shadow: none
+					a
+						padding-right: 40px !important
+					a:after
+						display: block
+						float: right
+						width: 0
+						height: 0
+						content: "\f105"
+						font-family: "FontAwesome"
+						margin-right: -15px
+
+				&.left // Submenu left
+					position: relative
+					>
+						.dropdown-menu
+							right: 100%
+							left: auto
+
+// Media
+@media (max-width: 767px)
+	.nav .open>a, .nav .open>a:focus, .nav .open>a:hover
+		border-color: $borderCol
+	.navbar-default .navbar-nav .open .dropdown-menu 
+		> li > a 
+			color: $colDefault
+			&:hover, &:focus 
+				color: $colHighlight
+		> .active 
+			> a, > a:hover, > a:focus 
+				color: $colHighlight
+				background-color: $bgHighlight
+	
+	.navbar-default
+		.navbar-nav
+			margin: 0 -15px
+			> li > a
+				border-bottom: 1px solid $borderCol
+			.dropdown-submenu, .dropdown
+				>
+					a:after
+						border: none
+						content: "\f107"
+						font-family: 'FontAwesome'
+						float: right !important
+				&.open
+					color: $colHighlight
+					background-color: $bgHighlight
+					>
+						a:after
+							content: "\f106"
+
+// Navbar hover dropdown
+@media only screen and (min-width : 768px)
+	.navbar-default
+		.navbar-nav
+			.dropdown:hover > .dropdown-menu
+				display: block
+
+//-----------------------------------------------------------
+//---------------------- END: Navbar ------------------------
+//-----------------------------------------------------------

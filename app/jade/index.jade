@@ -47,9 +47,84 @@ html(lang="ru")
 		#preloader
 			.cssload-whirlpool
 
-		// ########### body html code ###########
+		// Navbar 
+		nav.navbar.navbar-default
+			.container
+				.navbar-header
+					button.navbar-toggle.collapsed(type="button", data-toggle="collapse", data-target="#bs-example-navbar-collapse-1", aria-expanded="false")
+						span.sr-only Toggle navigation
+						span.icon-bar
+						span.icon-bar
+						span.icon-bar
+					a.navbar-brand(href="#") Website.com
+				#bs-example-navbar-collapse-1.collapse.navbar-collapse
+					ul.nav.navbar-nav
+						li.active
+							a(href="#")
+								| Link
+								span.sr-only (current)
+						li
+							a(href="#") Link
+						li.dropdown
+							a.dropdown-toggle(href="#", data-toggle="dropdown", role="button", aria-haspopup="true", aria-expanded="false") Drop down1
+							ul.dropdown-menu
+								li
+									a(href="#") Action
+								li
+									a(href="#") Another action
+								li.dropdown.dropdown-submenu
+									a.dropdown-toggle(href="#", data-toggle="dropdown") Something else here
+									ul.dropdown-menu
+										li
+											a(href="#") Dropdown Submenu Link 4.1
+										li
+											a(href="#") Dropdown Submenu Link 4.2
+										li
+											a(href="#") Dropdown Submenu Link 4.3
+										li
+											a(href="#") Dropdown Submenu Link 4.4
+								li
+									a(href="#") Separated link
 
-		
+								li.dropdown.dropdown-submenu
+									a.dropdown-toggle(href="#", data-toggle="dropdown") Dropdown Link 4
+									ul.dropdown-menu
+										li
+											a(href="#") Dropdown Submenu Link 4.1
+										li
+											a(href="#") Dropdown Submenu Link 4.2
+										li
+											a(href="#") Dropdown Submenu Link 4.3
+										li
+											a(href="#") Dropdown Submenu Link 4.4
+						li
+							a(href="#") Link
+					
+					ul.nav.navbar-nav.navbar-right
+						li.dropdown
+							a.dropdown-toggle(href="#", data-toggle="dropdown", role="button", aria-haspopup="true", aria-expanded="false") Dropdown1
+							ul.dropdown-menu
+								li
+									a(href="#") Action
+								li
+									a(href="#") Another action
+								li
+									a(href="#") Something else here
+								li
+									a(href="#") Separated link
+
+								li.dropdown.dropdown-submenu.left
+									a.dropdown-toggle(href="#", data-toggle="dropdown") Dropdown Link 4
+									ul.dropdown-menu
+										li
+											a(href="#") Dropdown Submenu Link 4.1
+										li
+											a(href="#") Dropdown Submenu Link 4.2
+										li
+											a(href="#") Dropdown Submenu Link 4.3
+										li
+											a(href="#") Dropdown Submenu Link 4.4
+		// END: Navbar 
 
 		// build:js js/vendor.min.js
 		// bower:js
