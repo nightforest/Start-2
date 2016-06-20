@@ -7,7 +7,7 @@ var wiredep = require('wiredep').stream;
 var useref = require('gulp-useref');
 var gulpif = require('gulp-if');
 var uglify = require('gulp-uglify');
-var minifyCss = require('gulp-minify-css');
+var cleanCSS = require('gulp-clean-css');
 var clean = require('gulp-clean');
 var uncss = require('gulp-uncss');
 var autoprefixer = require('gulp-autoprefixer');
@@ -28,7 +28,7 @@ gulp.task('uncss', function () {
         .pipe(uncss({
             html: ['dist/index.html']
         }))
-        .pipe(minifyCss())
+        .pipe(cleanCSS())
         .pipe(gulp.dest('dist/css/'));
 });
 
@@ -38,18 +38,25 @@ gulp.task('clean', function () {
         .pipe(clean());
 });
 
+// Минификация CSS
+gulp.task('minify-css', function() {
+  return gulp.src('dist/css/*.css')
+    .pipe(cleanCSS({compatibility: 'ie8'}))
+    .pipe(gulp.dest('dist/css/'));
+});
+
 // Сборка поекта
 gulp.task('build', ['clean'], function () {
-    var assets = useref.assets();
+    //var assets = useref.assets();
 
     gulp.src(['app/fonts/**/*.*', 'app/img/**/*.*', 'app/*.php'], {base: 'app'})
   		.pipe(gulp.dest('dist')) //копирует папку img и fonts в dist
 
     return gulp.src('app/*.html')
-        .pipe(assets)
+        //.pipe(assets)
         .pipe(gulpif('*.js', uglify()))
-        .pipe(gulpif('*.css', minifyCss()))
-        .pipe(assets.restore())
+        //.pipe(gulpif('*.css', cleanCSS({compatibility: 'ie8'})))
+        //.pipe(assets.restore())
         .pipe(useref())
         .pipe(gulp.dest('dist'));
 });
@@ -65,7 +72,7 @@ gulp.task('jade', function() {
 
 // Автоподключение CSS и JS файлов в index.html
 gulp.task('bower', function () {
-  gulp.src('./app/index.html')
+  gulp.src('./app/*.html')
     .pipe(wiredep({
       directory : 'app/bower_components',
       exclude: ['es5-shim', 'html5shiv', 'respond', 'modernizr']
@@ -113,7 +120,7 @@ gulp.task('concatCSS', function() {
 });
 
 gulp.task('watch', function() {
-  gulp.watch(['bower.json', 'app/index.html'], ['bower'])
+  gulp.watch(['bower.json', 'app/*.html'])
   gulp.watch('app/sass/**/*.sass', ['sass'])
   gulp.watch('app/jade/**/*.jade', ['jade'])
 });

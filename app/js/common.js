@@ -1,8 +1,12 @@
 $(document).ready(function() {
+
 	//Preloader
 	setTimeout(function(){
 		$('#preloader').fadeOut('slow',function(){$(this).remove();});
 	}, 1000);
+
+	// Img
+	$("img, a").on("dragstart", function(event) { event.preventDefault(); });
 
 	//Navbar
 	$('ul.dropdown-menu [data-toggle=dropdown]').on('click', function(event) {
@@ -12,12 +16,12 @@ $(document).ready(function() {
 		$(this).parent().toggleClass('open');
 	});
 
-	//SVG Fallback
-	if(!Modernizr.svg) {
-		$("img[src*='svg']").attr("src", function() {
-			return $(this).attr("src").replace(".svg", ".png");
-		});
-	};
+	// Hide Bootstrap nav collapse on click
+	$(document).on('click','.navbar-collapse.in',function(e) {
+		if( $(e.target).is('a') && ( $(e.target).attr('class') != 'dropdown-toggle' ) ) {
+			$(this).collapse('hide');
+		}
+	});
 
 	//Аякс отправка форм
 	//Документация: http://api.jquery.com/jquery.ajax/
@@ -36,16 +40,11 @@ $(document).ready(function() {
 		return false;
 	});
 
-	//Chrome Smooth Scroll
-	try {
-		$.browserSelector();
-		if($("html").hasClass("chrome")) {
-			$.smoothScroll();
-		}
-	} catch(err) {
-
-	};
-
-	$("img, a").on("dragstart", function(event) { event.preventDefault(); });
+	// Menu Toggle
+	$('.main-menu-toggle').click(function() {
+		$(this).toggleClass("on");
+		$('.main-menu').slideToggle('slow');
+	});
 
 });
+
